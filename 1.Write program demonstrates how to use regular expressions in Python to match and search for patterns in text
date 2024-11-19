@@ -1,0 +1,14 @@
+import re
+
+text = "My name is Shashank. I am Shashank son of rajesh"
+pattern = r"Shashank"
+matches = re.findall(pattern, text)
+print(f"The word 'Shashank' appears {len(matches)} times in the text.")
+
+search_pattern = r"\bS\w+"
+search_result = re.search(search_pattern, text)
+
+if search_result:
+    print(f"The first word starting with 'S' is: {search_result.group()}")
+else:
+    print("No word starting with 'S' found.")
