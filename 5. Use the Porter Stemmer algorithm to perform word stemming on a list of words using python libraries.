@@ -1,0 +1,24 @@
+from nltk.stem import PorterStemmer
+
+def perform_stemming(words):
+    # Initialize the Porter Stemmer
+    stemmer = PorterStemmer()
+    
+    # Perform stemming on each word
+    stemmed_words = [stemmer.stem(word) for word in words]
+    
+    return stemmed_words
+
+if __name__ == "__main__":
+    # Input words from the user
+    user_input = input("Enter words separated by spaces: ")
+    words = user_input.split()  # Split the input into a list of words
+    
+    # Perform stemming
+    stemmed_words = perform_stemming(words)
+    
+    # Print results
+    print(f"\n{'Word':<15}{'Stemmed Word'}")
+    print("-" * 30)
+    for word, stemmed_word in zip(words, stemmed_words):
+        print(f"{word:<15}{stemmed_word}")
