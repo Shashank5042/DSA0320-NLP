@@ -1,0 +1,37 @@
+class FSA:
+    def start(self):
+        self.state = 0  
+
+    def transition(self, char):
+        if self.state == 0:
+            if char == 'a':
+                self.state = 1
+            else:
+                self.state = 0
+        elif self.state == 1:
+            if char == 'b':
+                self.state = 2
+            else:
+                self.state = 0
+        elif self.state == 2:
+            if char == 'a':
+                self.state = 1
+            else:
+                self.state = 0
+
+    def accepts(self, text):
+        self.start()  
+        for char in text:
+            self.transition(char)
+        return self.state == 2  
+
+
+fsa = FSA()
+
+test_strings = ["helloab", "world", "IFab", "abab", "abc"]
+
+for text in test_strings:
+    if fsa.accepts(text):
+        print(f"The string '{text}' ends with 'ab'.")
+    else:
+        print(f"The string '{text}' does NOT end with 'ab'.")
